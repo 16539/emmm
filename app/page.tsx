@@ -1104,7 +1104,7 @@ export default function PrismTankGenerator() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
-                    解析结果
+                    解析结果(调整参数以获得图片最好的效果)
                     {parsedCanvas && (
                       <Button size="sm" onClick={() => downloadImage(parsedCanvas, "parsed-image.png")}>
                         <Download className="w-4 h-4 mr-2" />
@@ -1218,9 +1218,9 @@ export default function PrismTankGenerator() {
                       size="sm"
                       onClick={() => {
                         const newSettings = {
-                          exposure: 0,
-                          brightness: -13,
-                          contrast: 13,
+                          exposure: 0.1,
+                          brightness: -15,
+                          contrast: -5,
                         }
                         setTempParseSettings(newSettings)
                         setParseSettings(newSettings)
@@ -1232,7 +1232,7 @@ export default function PrismTankGenerator() {
                       className="flex-1 bg-transparent"
                     >
                       <Search className="w-4 h-4 mr-2" />
-                      解析表图
+                      解析表图预设
                     </Button>
                     <Button
                       variant="outline"
@@ -1253,7 +1253,7 @@ export default function PrismTankGenerator() {
                       className="flex-1 bg-transparent"
                     >
                       <Search className="w-4 h-4 mr-2" />
-                      解析里图
+                      解析里图预设
                     </Button>
                   </div>
                 </CardContent>
