@@ -91,9 +91,9 @@ export default function PrismTankGenerator() {
   })
   const [parsedCanvas, setParsedCanvas] = useState<HTMLCanvasElement | null>(null)
   const [parseSettings, setParseSettings] = useState<ParseSettings>({
-    exposure: 2,
-    brightness: 80,
-    contrast: 100,
+    exposure: 0,
+    brightness: 0,
+    contrast: 0,
   })
   const [tempParseSettings, setTempParseSettings] = useState<ParseSettings>(parseSettings)
   const [innerPosition, setInnerPosition] = useState<"odd" | "even">("odd") // 里图位置：奇数或偶数棋盘
@@ -1212,27 +1212,50 @@ export default function PrismTankGenerator() {
                     </div>
                   </div>
 
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                      const resetSettings = {
-                        exposure: 2,
-                        brightness: 80,
-                        contrast: 100,
-                      }
-                      setTempParseSettings(resetSettings)
-                      setParseSettings(resetSettings)
-                      if (parseTimeoutRef.current) {
-                        clearTimeout(parseTimeoutRef.current)
-                        setIsProcessingParse(false)
-                      }
-                    }}
-                    className="w-full"
-                  >
-                    <RotateCcw className="w-4 h-4 mr-2" />
-                    重置设置
-                  </Button>
+                  <div className="flex gap-2 w-full">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const newSettings = {
+                          exposure: 0,
+                          brightness: -13,
+                          contrast: 13,
+                        }
+                        setTempParseSettings(newSettings)
+                        setParseSettings(newSettings)
+                        if (parseTimeoutRef.current) {
+                          clearTimeout(parseTimeoutRef.current)
+                          setIsProcessingParse(false)
+                        }
+                      }}
+                      className="flex-1 bg-transparent"
+                    >
+                      <Search className="w-4 h-4 mr-2" />
+                      解析表图
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const newSettings = {
+                          exposure: 2,
+                          brightness: 80,
+                          contrast: 100,
+                        }
+                        setTempParseSettings(newSettings)
+                        setParseSettings(newSettings)
+                        if (parseTimeoutRef.current) {
+                          clearTimeout(parseTimeoutRef.current)
+                          setIsProcessingParse(false)
+                        }
+                      }}
+                      className="flex-1 bg-transparent"
+                    >
+                      <Search className="w-4 h-4 mr-2" />
+                      解析里图
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </div>
