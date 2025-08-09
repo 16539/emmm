@@ -72,9 +72,9 @@ export default function PrismTankGenerator() {
   const [outputCanvas, setOutputCanvas] = useState<HTMLCanvasElement | null>(null)
   const [recoveryCanvas, setRecoveryCanvas] = useState<HTMLCanvasElement | null>(null)
   const [recoverySettings, setRecoverySettings] = useState({
-    exposure: 0,
-    brightness: 0,
-    contrast: 0,
+    exposure: 2,
+    brightness: 80,
+    contrast: 100,
   })
   const [tempRecoverySettings, setTempRecoverySettings] = useState(recoverySettings)
 
@@ -91,9 +91,9 @@ export default function PrismTankGenerator() {
   })
   const [parsedCanvas, setParsedCanvas] = useState<HTMLCanvasElement | null>(null)
   const [parseSettings, setParseSettings] = useState<ParseSettings>({
-    exposure: 0,
-    brightness: 0,
-    contrast: 0,
+    exposure: 2,
+    brightness: 80,
+    contrast: 100,
   })
   const [tempParseSettings, setTempParseSettings] = useState<ParseSettings>(parseSettings)
   const [innerPosition, setInnerPosition] = useState<"odd" | "even">("odd") // 里图位置：奇数或偶数棋盘
@@ -1079,7 +1079,9 @@ export default function PrismTankGenerator() {
                           <Label htmlFor="even">偶数棋盘</Label>
                         </div>
                       </RadioGroup>
-                      <p className="text-xs text-gray-500">选择里图在棋盘格中的位置，影响解析算法的处理方式。算法：四向取均值</p>
+                      <p className="text-xs text-gray-500">
+                        选择里图在棋盘格中的位置，影响解析算法的处理方式。算法：四向取均值
+                      </p>
                     </div>
 
                     <div className="space-y-2">
@@ -1215,9 +1217,9 @@ export default function PrismTankGenerator() {
                     size="sm"
                     onClick={() => {
                       const resetSettings = {
-                        exposure: 0,
-                        brightness: 0,
-                        contrast: 0,
+                        exposure: 2,
+                        brightness: 80,
+                        contrast: 100,
                       }
                       setTempParseSettings(resetSettings)
                       setParseSettings(resetSettings)
